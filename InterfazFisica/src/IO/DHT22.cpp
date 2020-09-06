@@ -22,5 +22,11 @@ void IoDht22::debug(){
         Serial.println();
         Serial.print("Error DHT:");
         Serial.println();    
+    } else {
+        Serial.println();
+        Serial.print("DHT Temp: ");
+        Serial.println(temperatura);
+        Serial.print("DHT Hum: ");
+        Serial.println(humedad);
     }
 }

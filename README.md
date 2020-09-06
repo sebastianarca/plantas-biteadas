@@ -1,3 +1,7 @@
+Nota para compilar Arduino:
+ - Cada vez que se compila el proyecto es necesario borrar el contenido de la carpeta "build", a veces hay que repetir la compilacion porque falla al encontrar los archivos. Pero anda tal cual, solo hay que tener paciencia.
+ 
+
 ## Control de Cultivo
 
 El proyecto consta de distintas partes:
