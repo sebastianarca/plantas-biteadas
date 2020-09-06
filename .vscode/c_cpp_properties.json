@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/InterfazFisica/src/**",
+                "~/Arduino/libraries/U8g2/src",
+                "~/Arduino/libraries/PubSubClient/src",
+                "~/Arduino/libraries/ArduinoJson/src",
+                "~/.arduino15/packages/esp8266/tools/**",
+                "~/.arduino15/packages/esp8266/hardware/esp8266/2.4.2/**",
+                "~/Downloads/arduino-1.8.7/libraries/**",
+                "~/Downloads/arduino-1.8.7/libraries/U8g2/src"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "forcedInclude": []
+        }
+    ],
+    "version": 4
+}
