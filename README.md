@@ -6,7 +6,7 @@ Nota para compilar Arduino:
 
 El proyecto consta de distintas partes:
 
- - Interfaz con planta: ESP8266 + Mozilla Gateway
+ - Interfaz con planta: ESP8266 + API Web con respuesta JSON
  - - Se encarga de sensar y ejecutar acciones.
  - Proyecto proxy backend NodeJS
  - - Dar de alta, almacenar y mappear cada interfaz de cultivo.
@@ -22,15 +22,17 @@ El proyecto consta de distintas partes:
 
 Codigo escrito en C++ usando la plaqueta ESP8266 basado en Arduino.
 
-Como libreria se implementa el proyecto Mozilla Gateway, porque provee un API de comunicacion RestFullAPI JSON levantando un servidor HTTP dentro del ESP8266.
+Se implementa un API de comunicacion RESTFull API levantando un servidor HTTP dentro del ESP8266.
 Tanto las consultas de datos como las peticiones de acciones, se realizan mediante el mismo protocolo.
 
 Parte del objetivo sera que este componente pueda ser autonomo. Y disponga de una pantalla para leer los datos sin interfaz web.   
-En primer instancia el circuito estara montado en una protoboard pero la idea es que pueda estar montado en una caja resistente a pequeñas salpicaduras de agua y sea mediamenten simple conectarlo a la planta que se quiera sensar.
+En primer instancia el circuito estara montado en una protoboard pero la idea es que pueda estar montado en una caja resistente a pequeñas salpicaduras de agua y sea medianamenten simple conectarlo a la planta que se quiera sensar.
 
 ### Implementacion de la interfaz proxy
 
-La interfaz con la planta puede ser implementada con el mismo cliente de Mozilla Gateway en primer medida, para tener un feedback del circuito y su correcto uso.   
+La interfaz con la planta recibe los datos del API y adapta su comportamiento a la cantidad de cultivos disponibles, tanto como la cantidad de sensores y actuadores.
+
+Esta informacion es procesada, para almacenarse en una base de datos y poder ofrecer a posterior una interfaz grafica de usuario. Aunque tambien puede enviar los datos a un un proyecto de hogar automatizado como ser Mozilla Gateway.
 
 Sin embargo la idea es aprovechar el estandar para tener un servicio en NodeJS que consulte cada 5 segundos el estado de los sensores, y almacene dicha informacion en un base de datos para a posterior realizar estadisticas.   
 
