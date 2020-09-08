@@ -1,8 +1,9 @@
 #ifndef IO_DHT22_h
 #define IO_DHT22_h
 
-#include "../config/config.h"
+#include "Arduino.h"
 #include <DHT.h>
+
 #define DHTTYPE DHT11  //DHT
 
 class IoDht22{
