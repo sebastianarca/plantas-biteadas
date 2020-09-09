@@ -46,5 +46,5 @@ void loop() {
     api_json.updateSensor("temp", io_ambiente.getTemp());
 
     io_ambiente.debug();
-    display.loop();
+    Display::loop();
 }

@@ -22,7 +22,7 @@ void Display::setup(){
 void Display::loop(){
     u8g2.clearBuffer();
 
-    u8g2.setFont(u8g2_font_ncenB08_tr); // choose a suitable font
+    u8g2.setFont(u8g2_font_ncenB08_tr);
     u8g2.drawStr(0, 8, Display::texto_linea1);
     u8g2.drawStr(0, 18, Display::texto_linea2);
     u8g2.drawStr(0, 28, Display::texto_linea3);

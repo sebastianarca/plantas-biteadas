@@ -6,7 +6,7 @@
 class Display {
     public:
         void setup();
-        void loop();
+        static void loop();
         static char texto_linea1[16];
         static char texto_linea2[16];
         static char texto_linea3[16];
