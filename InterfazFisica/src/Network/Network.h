@@ -13,6 +13,8 @@ class WifiNetwork {
         static void handleNotFound();
         static void ApiRouter();
         static void getHelloWord();
+        static String formularioWeb();
+        static void ApiRouterWeb();
 
         void setup();
         void loop();
