@@ -1,6 +1,7 @@
 // #include "../config/config.h"
 #include "Network.h"
 #include "../ApiJSON/CultivoJSON.h"
+#include "../Display/Display.h"
 #ifndef CONFIG_NETWORK_h
     #include "../config/config_network.h"
 #endif
@@ -15,12 +16,30 @@ ESP8266WebServer WifiNetwork::server(80);
 void WifiNetwork::setup(){
     WiFi.mode(WIFI_STA);
     WiFi.begin(wifi_ssid, wifi_pass);
-    while (WiFi.status() != WL_CONNECTED) {
+    int check_count = 0;
+    int check_limit = 50;
+    while (WiFi.status() != WL_CONNECTED && check_count < check_limit) {
         delay(500);
         Serial.print(".");
+        check_count++;
     }
-    if (MDNS.begin(hostname)) {
-      Serial.println("MDNS responder started");
+    IPAddress myIP;
+    if(check_count == check_limit){
+        WiFi.mode(WIFI_SHUTDOWN);
+        WiFi.softAP(hostname, NULL, 1);
+        myIP = WiFi.softAPIP();
+
+        Display::setLinea1("Wifi modo AP");
+
+        Serial.print("AP IP address: ");
+        Serial.println(myIP);
+    } else {
+        myIP    = WiFi.localIP();
+        
+        Display::setLinea1("Wifi modo client");
+    }
+    if (MDNS.begin(hostname, myIP)) {
+        Serial.println("MDNS responder started");
     }
     ApiRouter();
 

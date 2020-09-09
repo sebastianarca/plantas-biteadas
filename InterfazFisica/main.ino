@@ -5,6 +5,7 @@
 #include <ESP8266mDNS.h>
 #include <ArduinoJson.h>
 
+#include "src/Display/Display.h"
 #include "src/ApiJSON/CultivoJSON.h"
 #include "src/IO/DHT22.h"
 #include "src/Network/Network.h"
@@ -12,6 +13,7 @@
 IoDht22 io_ambiente;
 WifiNetwork wifi;
 CultivoJson api_json;
+Display display;
 
 long lastMsg    = 0;
 bool ventanaProcesamiento(){
@@ -27,6 +29,7 @@ bool ventanaProcesamiento(){
 
 void setup(){
     Serial.begin(115200);
+    display.setup();
     wifi.setup();
     wifi.debug();
     api_json.setup();
@@ -43,4 +46,5 @@ void loop() {
     api_json.updateSensor("temp", io_ambiente.getTemp());
 
     io_ambiente.debug();
+    display.loop();
 }
