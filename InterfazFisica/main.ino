@@ -1,10 +1,3 @@
-#include "Arduino.h"
-#include <ESP8266WiFi.h>
-#include <WiFiClient.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
-#include <ArduinoJson.h>
-
 #include "src/Display/Display.h"
 #include "src/ApiJSON/CultivoJSON.h"
 #include "src/IO/DHT22.h"
@@ -25,7 +18,6 @@ bool ventanaProcesamiento(){
         return false;
     }
 }
-
 
 void setup(){
     Serial.begin(115200);
